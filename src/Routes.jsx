@@ -2,6 +2,8 @@ import React from 'react';
 import { Switch, Redirect, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
+import Posts from './pages/Posts';
+import Albums from './pages/Albums';
 
 function Routes() {
   return (
@@ -9,6 +11,14 @@ function Routes() {
       <Route
         path="/home"
         component={Home}
+        exact />
+      <Route
+        path="/posts"
+        component={Posts}
+        exact />
+      <Route
+        path="/albums"
+        component={Albums}
         exact />
       <Redirect
         from="/"

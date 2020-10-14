@@ -10,7 +10,9 @@ function App() {
     <Router>
       <div>
         <Navigation />
-        <Routes />
+        <div className="pages">
+          <Routes />
+        </div>
       </div>
     </Router>
   );
