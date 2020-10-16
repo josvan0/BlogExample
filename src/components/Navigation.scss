@@ -1,65 +1,74 @@
-@import '../App';
+@import "../App";
 
 header {
-    align-items: center;
-    box-shadow: 0px 3px 5px -1px $accent-light-color;
-    display: flex;
-    flex-wrap: wrap;
-    height: 80px;
-    justify-content: space-evenly;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
+  align-items: center;
+  background-color: white;
+  box-shadow: 0px 3px 5px -1px $accent-light-color;
+  display: flex;
+  flex-wrap: wrap;
+  height: 80px;
+  justify-content: space-evenly;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
 }
 
 .logo {
-    color: $primary-color;
-    font-family: $title-font;
+  color: $primary-color;
+  font-family: $title-font;
 }
 
 .menu {
-    align-items: center;
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 40px;
-    justify-content: space-evenly;
-    list-style-type: none;
+  align-items: center;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 40px;
+  justify-content: space-evenly;
+  list-style-type: none;
 }
 
 .menu a {
-    color: $accent-dark-color;
-    font-family: $normal-font;
-    font-size: 1em;
-    padding: 10px 20px;
-    text-decoration: none;
+  border-bottom: 2px solid transparent;
+  color: $accent-dark-color;
+  font-family: $normal-font;
+  font-size: 1em;
+  padding: 10px 20px;
+  text-decoration: none;
+  transition: all ease-in-out .3s;
 }
 
 .menu a:hover {
-    border-bottom: 2px solid $accent-dark-color;
+  border-color: $accent-dark-color;
+}
+
+.menu .active {
+  color: $primary-color;
+  border-color: $primary-color;
 }
 
 /* responsive */
 
-@media screen and (max-width: 480px) {
-    header {
-        justify-content: center;
-        height: auto;
-        padding: 20px;
-        position: relative;
-    }
+@media screen and (max-width: $responsive-width) {
+  header {
+    justify-content: center;
+    height: auto;
+    padding: 20px;
+    position: relative;
+  }
 
-    .logo {
-        font-size: 1em;
-        margin-bottom: 20px;
-    }
+  .logo {
+    font-size: 1em;
+    margin-bottom: 20px;
+  }
 
-    .menu {
-        gap: 0;
-        justify-content: center;
-    }
+  .menu {
+    gap: 0;
+    justify-content: center;
+  }
 
-    .pages {
-        margin-top: 0;
-    }
+  .pages {
+    margin-top: 0;
+  }
 }

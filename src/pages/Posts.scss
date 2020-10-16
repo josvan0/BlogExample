@@ -1,0 +1,16 @@
+@import '../App';
+
+.post-list {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+/* responsive */
+
+@media screen and (max-width: $responsive-width) {
+  .post-list {
+    display: block;
+  }
+}

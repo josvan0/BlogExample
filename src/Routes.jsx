@@ -14,8 +14,7 @@ function Routes() {
         exact />
       <Route
         path="/posts"
-        component={Posts}
-        exact />
+        component={Posts} />
       <Route
         path="/albums"
         component={Albums}

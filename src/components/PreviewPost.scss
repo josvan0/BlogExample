@@ -1,0 +1,60 @@
+@import '../App';
+
+.preview-post {
+  background-color: $white-color;
+  border: 1px solid $accent-light-color;
+  border-radius: 10px;
+  margin: 20px;
+  max-width: 30%;
+  padding: 20px;
+  position: relative;
+  transition: all ease-in-out .3s;
+}
+
+.preview-post:hover {
+  background-color: white;
+}
+
+.preview-post h3 {
+  color: $primary-color;
+  font-family: $title-font;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.preview-post p {
+  font-family: $normal-font;
+  font-size: 1em;
+  margin-bottom: 40px;
+  text-align: justify;
+  word-wrap: break-word;
+}
+
+.preview-post a {
+  background-color: $accent-dark-color;
+  bottom: 0;
+  border-radius: 5px;
+  color: $white-color;
+  cursor: pointer;
+  display: inline-block;
+  font-family: $normal-font;
+  font-size: .8em;
+  margin: 10px;
+  padding: 10px 15px;
+  position: absolute;
+  right: 0;
+  text-decoration: none;
+  transition: all ease-in-out .3s;
+}
+
+.preview-post a:hover {
+  background-color: $accent-color;
+}
+
+/* responive*/
+
+@media screen and (max-width: $responsive-width) {
+  .preview-post {
+    max-width: 100%;
+  }
+}
