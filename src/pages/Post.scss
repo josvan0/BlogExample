@@ -1,0 +1,41 @@
+@import '../App';
+
+.post {
+    padding: 2% 20%;
+}
+
+.post h2 {
+    color: $primary-color;
+    font-family: $title-font;
+    font-size: 2.25em;
+    margin-left: 20px;
+}
+
+.post hr {
+    background-color: $accent-color;
+    border: 2px solid $accent-color;
+    color: $accent-color;
+    margin: 20px;
+}
+
+.post p {
+    font-family: $normal-font;
+    font-size: 1.25em;
+    text-align: justify;
+}
+
+/* responsive */
+
+@media screen and (max-width: $responsive-width) {
+    .post {
+        padding: 5% 10%;
+    }
+
+    .post h2 {
+        font-size: 1.5em;
+    }
+
+    .post p {
+        font-size: 1em;
+    }
+}
