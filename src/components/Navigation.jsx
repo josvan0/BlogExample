@@ -12,18 +12,19 @@ function Navigation() {
       <nav>
         <ul className="menu">
           <li>
+            {/* NavLink is special because has an active status if the path exists */}
             <NavLink
               exact
               to="/home"
               activeClassName="active">
-                Home
+              Home
             </NavLink>
           </li>
           <li>
             <NavLink
               to="/posts"
               activeClassName="active">
-                Posts
+              Posts
             </NavLink>
           </li>
           <li>
@@ -31,7 +32,7 @@ function Navigation() {
               exact
               to="/albums"
               activeClassName="active">
-                Albums
+              Albums
             </NavLink>
           </li>
         </ul>

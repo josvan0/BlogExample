@@ -8,7 +8,8 @@ import Routes from './Routes';
 function App() {
   return (
     <Router>
-      <div>
+      {/* Router is needed for use switch, routes and redirects... */}
+      <div className="app">
         <Navigation />
         <div className="pages">
           <Routes />

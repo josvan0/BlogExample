@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
@@ -6,47 +6,33 @@ import './Post.scss';
 import UserLink from '../components/UserLink';
 import { postsUrl } from '../helpers/jsonPlaceholderHelper';
 
-class PostBody extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      title: '',
-      content: '',
-      userId: 0
-    };
-  }
-
-  componentDidMount() {
-    axios.get(postsUrl(this.props.id))
+function Post() {
+  // react router hook to obtain url params
+  const { postId } = useParams();
+  // hooks
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [userId, setUserId] = useState(0);
+  // similar to componentDidMount and componentDidUpdate
+  useEffect(() => {
+    axios.get(postsUrl(postId))
       .then(response => {
-        this.setState({
-          title: response.data.title,
-          content: response.data.body,
-          userId: response.data.userId
-        });
+        // response.data is the body JSON response
+        setTitle(response.data.title);
+        setContent(response.data.body);
+        setUserId(response.data.userId);
       })
       .catch(e => console.error(e));
-  }
+  });
 
-  render() {
-    return (
-      <div className="post">
-        <h2>{this.state.title}</h2>
-        <hr />
-        <p>{this.state.content}</p>
-        <UserLink id={this.state.userId} />
-        {/* falta componente para el usuario y los comentarios */}
-      </div>
-    );
-  }
-}
-
-function Post() {
-  const { postId } = useParams();
   return (
-    <>
-      <PostBody id={postId} />
-    </>
+    <div className="post">
+      <h2>{title}</h2>
+      <hr />
+      <p>{content}</p>
+      <UserLink id={userId} />
+      {/* falta componente para el usuario y los comentarios */}
+    </div>
   );
 }
 
