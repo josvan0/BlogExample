@@ -1,4 +1,4 @@
-@import '../App';
+@import "../App";
 
 .preview-post {
   background-color: $white-color;
@@ -8,11 +8,7 @@
   max-width: 30%;
   padding: 20px;
   position: relative;
-  transition: all ease-in-out .3s;
-}
-
-.preview-post:hover {
-  background-color: white;
+  transition: all ease-in-out 0.3s;
 }
 
 .preview-post h3 {
@@ -38,13 +34,13 @@
   cursor: pointer;
   display: inline-block;
   font-family: $normal-font;
-  font-size: .8em;
+  font-size: 0.8em;
   margin: 10px;
   padding: 10px 15px;
   position: absolute;
   right: 0;
   text-decoration: none;
-  transition: all ease-in-out .3s;
+  transition: all ease-in-out 0.3s;
 }
 
 .preview-post a:hover {

@@ -15,3 +15,11 @@ export const usersUrl = (userId = -1) => {
     return `${ENDPOINT}/users/${userId}`;
   }
 };
+
+export const commentsUrl = (postId, queryParams=true) => {
+  if (queryParams) {
+    return `${ENDPOINT}/comments?postId=${postId}`;
+  } else {
+    return `${ENDPOINT}/posts/${postId}/comments`;
+  }
+};

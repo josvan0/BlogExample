@@ -24,11 +24,11 @@ function UserLink(props) {
 
   return (
     <div className="user-link">
-      <div className="popup">
+      <div className="dialog">
         <b>{name}</b>
         <i>{email}</i>
       </div>
-      <p>By: <Link to="">{username}</Link></p>
+      <p>By: <Link to={`/users/${props.id}`}>{username}</Link></p>
     </div>
   );
 }

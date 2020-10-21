@@ -1,0 +1,39 @@
+@import "../App";
+
+.comments {
+  border-radius: 5px;
+  margin-top: 30px;
+  padding: 40px 20px;
+  position: relative;
+}
+
+.comments h3 {
+  color: $accent-color;
+  font-family: $title-font;
+}
+
+.comments a {
+  bottom: 0;
+  color: $accent-dark-color;
+  display: inline-block;
+  font-family: $normal-font;
+  font-size: 1em;
+  margin: 10px 20px;
+  position: absolute;
+  right: 0;
+  text-decoration: none;
+}
+
+.comments a:hover {
+  color: $accent-color;
+  text-decoration: underline;
+}
+
+/* responsive */
+
+@media screen and (max-width: $responsive-width) {
+  .comments {
+    padding: 0;
+    padding-bottom: 30px;
+  }
+}

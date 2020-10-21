@@ -1,0 +1,38 @@
+@import '../App';
+
+@mixin normalFont($size) {
+  font-family: $normal-font;
+  font-size: $size;
+}
+
+.comment {
+  margin: 10px;
+  padding: 20px;
+}
+
+.comment > * {
+  display: block;
+}
+
+.comment h4 {
+  @include normalFont(.8em);
+}
+
+.comment cite {
+  color: $accent-color;
+  @include normalFont(.6em);
+  margin-bottom: 10px;
+}
+
+.comment p {
+  @include normalFont(.6em);
+}
+
+/* responsive */
+
+@media screen and (max-width: $responsive-width) {
+  .comment {
+    margin: 0;
+    padding: 10px;
+  }
+}

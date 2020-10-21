@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useRouteMatch } from 'react-router-dom';
 
 import './Post.scss';
 import UserLink from '../components/UserLink';
+import Comments from '../components/Comments';
 import { postsUrl } from '../helpers/jsonPlaceholderHelper';
 
 function Post() {
   // react router hook to obtain url params
   const { postId } = useParams();
+  const { path } = useRouteMatch();
   // hooks
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -31,7 +33,9 @@ function Post() {
       <hr />
       <p>{content}</p>
       <UserLink id={userId} />
-      {/* falta componente para el usuario y los comentarios */}
+      <Comments
+        postId={postId}
+        url={path} />
     </div>
   );
 }
