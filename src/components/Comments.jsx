@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import './Comments.scss';
@@ -12,7 +11,7 @@ function Comments(props) {
   useEffect(() => {
     axios.get(commentsUrl(props.postId))
     .then(response => {
-      setCommentList(response.data.slice(0, 5));
+      setCommentList(response.data);
     })
     .catch(e => console.error(e));
   });
@@ -30,7 +29,6 @@ function Comments(props) {
       <h3>Comments</h3>
       <hr />
       <div className="comment-list">{commentaries}</div>
-      <Link to={`${props.url}/comments`}>All</Link>
     </div>
   );
 }

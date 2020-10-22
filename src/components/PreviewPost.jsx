@@ -9,7 +9,7 @@ function PreviewPost(props) {
     <div className="preview-post">
       <h3>{props.title}</h3>
       <p>{content}</p>
-      <Link to={`${props.url}/${props.id}`}>See</Link>
+      <Link to={`/posts/${props.id}`}>See</Link>
     </div>
   );
 }

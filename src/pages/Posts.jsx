@@ -3,8 +3,8 @@ import axios from 'axios';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 
 import './Posts.scss';
-import PreviewPost from '../components/PreviewPost';
 import Post from './Post';
+import PreviewPost from '../components/PreviewPost';
 import { postsUrl } from '../helpers/jsonPlaceholderHelper';
 
 function Posts() {
@@ -24,7 +24,6 @@ function Posts() {
     return (
       <PreviewPost
         key={post.id}
-        url={path}
         id={post.id}
         title={post.title}
         content={post.body} />
