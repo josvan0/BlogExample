@@ -1,0 +1,69 @@
+@import '../App';
+
+@mixin text($font, $size) {
+  color: $white-color;
+  font-family: $font;
+  font-size: $size;
+  text-align: center;
+  z-index: 1;
+}
+
+@mixin color-element($color, $deg) {
+  background-color: $color;
+  position: fixed;
+  height: 100vh;
+  transform: skewY($deg);
+  width: 100vw;
+}
+
+.home {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  min-height: 100vh;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+.primary-element {
+  @include color-element($primary-color, 40deg);
+}
+
+.accent-element {
+  @include color-element($accent-color, -20deg);
+}
+
+.home h2 {
+  @include text($title-font, 4em);
+}
+
+.home h3 {
+  @include text($normal-font, 2em);
+}
+
+.home cite {
+  @include text($normal-font, .8em);
+  bottom: 0;
+  margin-bottom: 20px;
+  position: absolute;
+}
+
+@media screen and (max-width: $responsive-width) {
+  .primary-element {
+    transform: skewY(60deg);
+  }
+
+  .accent-element {
+    transform: skewY(-65deg);
+  }
+
+  .home h2 {
+    font-size: 2em;
+  }
+
+  .home h3 {
+    font-size: 1.2em;
+  }
+}
