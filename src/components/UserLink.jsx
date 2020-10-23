@@ -12,15 +12,28 @@ function UserLink(props) {
 
   useEffect(() => {
     if (props.id !== 0) {
-      axios.get(usersUrl(props.id))
+      const source = axios.CancelToken.source();
+      axios.get(usersUrl(props.id),{
+        cancelToken: source.token
+      })
         .then(response => {
           setUsername(response.data.username);
           setName(response.data.name);
           setEmail(response.data.email);
         })
-        .catch(e => console.error(e));
+        .catch(e => {
+          if (axios.isCancel(e)) {
+            console.log(e);
+          } else {
+            console.error(e);
+          }
+        });
+
+      return () => {
+        source.cancel('User request cancelled');
+      }
     }
-  });
+  }, [props.id]);
 
   return (
     <div className="user-link">

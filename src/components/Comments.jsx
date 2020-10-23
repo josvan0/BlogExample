@@ -9,12 +9,25 @@ function Comments(props) {
   const [commentList, setCommentList] = useState([]);
 
   useEffect(() => {
-    axios.get(commentsUrl(props.postId))
+    const source = axios.CancelToken.source();
+    axios.get(commentsUrl(props.postId), {
+      cancelToken: source.token
+    })
     .then(response => {
       setCommentList(response.data);
     })
-    .catch(e => console.error(e));
-  });
+    .catch(e => {
+      if (axios.isCancel(e)) {
+        console.log(e);
+      } else {
+        console.error(e);
+      }
+    });
+
+    return () => {
+      source.cancel('Comments request cancelled');
+    }
+  }, [props.postId]);
 
   const commentaries = commentList.map(comment => (
     <Comment

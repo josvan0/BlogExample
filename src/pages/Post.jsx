@@ -16,15 +16,28 @@ function Post() {
   const [userId, setUserId] = useState(0);
   // similar to componentDidMount and componentDidUpdate
   useEffect(() => {
-    axios.get(postsUrl(postId))
+    const source = axios.CancelToken.source();
+    axios.get(postsUrl(postId), {
+      cancelToken: source.token
+    })
       .then(response => {
         // response.data is the body JSON response
         setTitle(response.data.title);
         setContent(response.data.body);
         setUserId(response.data.userId);
       })
-      .catch(e => console.error(e));
-  });
+      .catch(e => {
+        if (axios.isCancel(e)) {
+          console.log(e);
+        } else {
+          console.error(e);
+        }
+      });
+
+    return () => {
+      source.cancel('Post request cancelled');
+    }
+  }, [postId]); // <- runs again the hook if value changed
 
   return (
     <div className="post">
