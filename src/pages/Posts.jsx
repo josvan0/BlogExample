@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 
-import './Posts.scss';
 import Post from './Post';
-import PreviewPost from '../components/PreviewPost';
+import PreviewLink from '../components/PreviewLink';
 import { postsUrl } from '../helpers/jsonPlaceholderHelper';
 
 function Posts() {
@@ -44,11 +43,11 @@ function Posts() {
 
   const posts = postList.map(post => {
     return (
-      <PreviewPost
+      <PreviewLink
         key={post.id}
-        id={post.id}
         title={post.title}
-        content={post.body} />
+        content={post.body}
+        destiny={`${path}/${post.id}`} />
     );
   });
 
@@ -57,7 +56,7 @@ function Posts() {
       <Route
         exact
         path={path}>
-        <div className="post-list">{posts}</div>
+        <div className="link-list">{posts}</div>
       </Route>
       <Route
         path={`${path}/:postId`}

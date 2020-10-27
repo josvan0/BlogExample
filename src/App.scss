@@ -28,3 +28,20 @@ $responsive-width: 480px;
     margin-top: 0;
   }
 }
+
+/* general styles for components */
+
+.link-list {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+/* responsive */
+
+@media screen and (max-width: $responsive-width) {
+  .link-list {
+    display: block;
+  }
+}
