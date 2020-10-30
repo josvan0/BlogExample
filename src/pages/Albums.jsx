@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 
+import Album from './Album';
 import PreviewLink from '../components/PreviewLink';
 import { albumsUrl } from '../helpers/jsonPlaceholderHelper';
 
@@ -29,6 +30,7 @@ function Albums() {
   const links = albumList.map(album => {
     return (
       <PreviewLink
+        key={album.id}
         title={album.title}
         destiny={`${path}/${album.id}`} />
     );
@@ -42,7 +44,8 @@ function Albums() {
         <div className="link-list">{links}</div>
       </Route>
       <Route
-        path={`${path}/:albumId`} />
+        path={`${path}/:albumId`}
+        component={Album} />
     </Switch>
   );
 }
