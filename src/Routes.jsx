@@ -19,7 +19,6 @@ function Routes() {
         path="/posts"
         component={Posts} />
       <Route
-        exact
         path="/albums"
         component={Albums} />
       {/* if path from is exact redirect to new path */}

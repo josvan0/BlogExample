@@ -1,0 +1,12 @@
+@import '../App';
+
+.photo img {
+    border-radius: 20px;
+    position: relative;
+    transition: all ease-in-out .3s;
+}
+
+.photo:hover img {
+    border-radius: 0;
+    cursor: pointer;
+}

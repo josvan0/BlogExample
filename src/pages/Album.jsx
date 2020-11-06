@@ -3,11 +3,14 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 import './Album.scss';
+import UserLink from '../components/UserLink';
+import Photo from '../components/Photo';
 import { albumsUrl, photosUrl } from '../helpers/jsonPlaceholderHelper';
 
 function Album() {
   const { albumId } = useParams();
   const [title, setTitle] = useState('Album');
+  const [userId, setUserId] = useState(0);
   const [photoList, setPhotoList] = useState([]);
 
   useEffect(() => {
@@ -31,6 +34,7 @@ function Album() {
     })
       .then(response => {
         setTitle(response.data.title);
+        setUserId(response.data.userId);
       })
       .catch(e => {
         if (axios.isCancel(e)) {
@@ -41,10 +45,20 @@ function Album() {
       });
   }, [albumId]);
 
-  const photos = photoList.map(photo => <p>a</p>);
+  const photos = photoList.map(photo => {
+    return (
+      <Photo
+        key={photo.id}
+        name={photo.title}
+        thumb={photo.thumbnailUrl}
+        url={photo.url} />
+    );
+  });
+
   return (
     <div className="album">
       <h2>{title}</h2>
+      <UserLink id={userId} />
       <div className="gallery">{photos}</div>
     </div>
   );
