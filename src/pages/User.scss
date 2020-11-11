@@ -1,0 +1,120 @@
+@import '../App';
+
+.user-data {
+  padding: 0 40px;
+}
+
+.username>* {
+  display: inline-block;
+}
+
+.username .name {
+  color: $accent-color;
+  font-family: $title-font;
+  font-size: 2.5em;
+}
+
+.username .nick {
+  color: $accent-light-color;
+  font-family: $normal-font;
+  font-size: 2em;
+  margin-left: 20px;
+}
+
+.contact-info,
+.address-info {
+  margin: 5px;
+}
+
+.contact-info>* {
+  font-family: $normal-font;
+  font-size: 1em;
+}
+
+.contact-info .email {
+  color: $primary-color;
+  display: inline-block;
+}
+
+.contact-info .phone {
+  display: inline-block;
+  margin: 0 20px;
+}
+
+.contact-info .site {
+  margin-top: 5px;
+}
+
+.contact-info .site a {
+  color: $accent-dark-color;
+  text-decoration: none;
+}
+
+.contact-info .site a:hover {
+  text-decoration: underline;
+}
+
+.address-info>p {
+  font-family: $normal-font;
+  font-size: .8em;
+}
+
+.address-info hr {
+  color: $accent-light-color;
+  border: 2px solid $accent-light-color;
+  margin: 10px 0;
+}
+
+.tabs {
+  align-items: center;
+  display: flex;
+  flex-wrap: nowrap;
+  border-bottom: 4px solid $primary-color;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.tab-btn {
+  background-color: white;
+  border: none;
+  color: $accent-color;
+  cursor: pointer;
+  font-family: $normal-font;
+  font-size: 1.2em;
+  padding: 10px 20px;
+  transition: all ease-in-out .3s;
+}
+
+.tab-btn:hover {
+  background-color: $accent-light-color;
+}
+
+.tabs .active {
+  background-color: $primary-color;
+  color: $white-color;
+}
+
+@media screen and (max-width: $responsive-width) {
+  .user-data {
+    padding: 10px;
+  }
+
+  .username>* {
+    display: block;
+  }
+
+  .username .nick {
+    font-size: 1.2em;
+    margin-left: 0px;
+  }
+
+  .contact-info,
+  .address-info {
+    font-size: .8em;
+    margin: 5px 0;
+  }
+
+  .tabs {
+    margin-top: 10px;
+  }
+}

@@ -6,7 +6,7 @@ import Post from './Post';
 import PreviewLink from '../components/PreviewLink';
 import { postsUrl } from '../helpers/jsonPlaceholderHelper';
 
-function Posts() {
+function Posts(props) {
   // extract actual url path
   const { path } = useRouteMatch();
   const [postList, setPostList] = useState([]);
@@ -14,8 +14,10 @@ function Posts() {
   useEffect(() => {
     // generate token and cancel method
     const source = axios.CancelToken.source();
+    // if pass an undefined and if the param has default value, takes the default
+    const url = postsUrl(undefined, props.userId);
     // pass token to request for cancel
-    axios.get(postsUrl(), {
+    axios.get(url, {
       cancelToken: source.token
     })
       .then(response => {
@@ -35,7 +37,7 @@ function Posts() {
       // call cancel to cancel request
       source.cancel('Posts request cancelled');
     }
-  }, []); /* array contains vars whom depend hook
+  }, [props.userId]); /* array contains vars whom depend hook
   if no vars setted would create perfomance problems like
   memory overconsume because hook make requests infinite times,
   to avoid this, pass an empty array as second param to took
@@ -47,7 +49,7 @@ function Posts() {
         key={post.id}
         title={post.title}
         content={post.body}
-        destiny={`${path}/${post.id}`} />
+        destiny={`/posts/${post.id}`} />
     );
   });
 

@@ -12,7 +12,7 @@ function PreviewLink(props) {
   return (
     <div className="preview-link">
       <h3>{props.title}</h3>
-      { content && <p>{content}</p> }
+      { content && <p>{content}</p>}
       <Link to={props.destiny ?? '/'}>See</Link>
     </div>
   );

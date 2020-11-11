@@ -13,7 +13,7 @@ function UserLink(props) {
   useEffect(() => {
     if (props.id !== 0) {
       const source = axios.CancelToken.source();
-      axios.get(usersUrl(props.id),{
+      axios.get(usersUrl(props.id), {
         cancelToken: source.token
       })
         .then(response => {

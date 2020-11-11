@@ -43,6 +43,10 @@ function Album() {
           console.error(e);
         }
       });
+
+    return () => {
+      source.cancel('Album request cancelled');
+    }
   }, [albumId]);
 
   const photos = photoList.map(photo => {

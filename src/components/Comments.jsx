@@ -13,16 +13,16 @@ function Comments(props) {
     axios.get(commentsUrl(props.postId), {
       cancelToken: source.token
     })
-    .then(response => {
-      setCommentList(response.data);
-    })
-    .catch(e => {
-      if (axios.isCancel(e)) {
-        console.log(e);
-      } else {
-        console.error(e);
-      }
-    });
+      .then(response => {
+        setCommentList(response.data);
+      })
+      .catch(e => {
+        if (axios.isCancel(e)) {
+          console.log(e);
+        } else {
+          console.error(e);
+        }
+      });
 
     return () => {
       source.cancel('Comments request cancelled');

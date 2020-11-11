@@ -4,6 +4,7 @@ import { Switch, Redirect, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Posts from './pages/Posts';
 import Albums from './pages/Albums';
+import User from './pages/User';
 import PageNotFound from './pages/PageNotFound';
 
 function Routes() {
@@ -21,6 +22,9 @@ function Routes() {
       <Route
         path="/albums"
         component={Albums} />
+      <Route
+        path="/users/:userId"
+        component={User} />
       {/* if path from is exact redirect to new path */}
       <Redirect
         exact

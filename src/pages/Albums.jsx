@@ -6,13 +6,14 @@ import Album from './Album';
 import PreviewLink from '../components/PreviewLink';
 import { albumsUrl } from '../helpers/jsonPlaceholderHelper';
 
-function Albums() {
+function Albums(props) {
   const { path } = useRouteMatch();
   const [albumList, setAlbumList] = useState([]);
 
   useEffect(() => {
     const source = axios.CancelToken.source();
-    axios.get(albumsUrl(), {
+    const url = albumsUrl(undefined, props.userId);
+    axios.get(url, {
       cancelToken: source.token
     })
       .then(response => {
@@ -25,14 +26,18 @@ function Albums() {
           console.error(e);
         }
       });
-  }, []);
+
+    return () => {
+      source.cancel('Albums request cancelled')
+    }
+  }, [props.userId]);
 
   const links = albumList.map(album => {
     return (
       <PreviewLink
         key={album.id}
         title={album.title}
-        destiny={`${path}/${album.id}`} />
+        destiny={`/albums/${album.id}`} />
     );
   });
 
